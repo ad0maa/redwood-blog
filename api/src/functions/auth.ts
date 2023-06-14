@@ -22,8 +22,7 @@ export const handler = async (
     // address in a toast message so the user will know it worked and where
     // to look for the email.
     handler: (user) => {
-      // return user
-      return false
+      return user
     },
 
     // How long the resetToken is valid for, in seconds (default is 24 hours)
@@ -109,6 +108,7 @@ export const handler = async (
     // If this returns anything else, it will be returned by the
     // `signUp()` function in the form of: `{ message: 'String here' }`.
     handler: ({ username, hashedPassword, salt, userAttributes }) => {
+      // return false // don't log the user in
       return db.user.create({
         data: {
           email: username,
